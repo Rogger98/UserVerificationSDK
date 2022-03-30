@@ -16,6 +16,9 @@
 		6E705AD127F4971C004EB42E /* DocumentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E705ACF27F4971C004EB42E /* DocumentViewController.xib */; };
 		6E705AD727F4975B004EB42E /* VFDocumnetReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E705AD627F4975B004EB42E /* VFDocumnetReader.swift */; };
 		6E705ADB27F497B5004EB42E /* DocumnetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E705ADA27F497B5004EB42E /* DocumnetViewModel.swift */; };
+		6E705AE127F4A040004EB42E /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E705ADF27F4A040004EB42E /* ScanViewController.swift */; };
+		6E705AE227F4A040004EB42E /* ScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E705AE027F4A040004EB42E /* ScanViewController.xib */; };
+		6E705AE827F4A3AA004EB42E /* VFCamaraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E705AE727F4A3AA004EB42E /* VFCamaraManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +44,9 @@
 		6E705ACF27F4971C004EB42E /* DocumentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DocumentViewController.xib; sourceTree = "<group>"; };
 		6E705AD627F4975B004EB42E /* VFDocumnetReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VFDocumnetReader.swift; sourceTree = "<group>"; };
 		6E705ADA27F497B5004EB42E /* DocumnetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumnetViewModel.swift; sourceTree = "<group>"; };
+		6E705ADF27F4A040004EB42E /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
+		6E705AE027F4A040004EB42E /* ScanViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScanViewController.xib; sourceTree = "<group>"; };
+		6E705AE727F4A3AA004EB42E /* VFCamaraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VFCamaraManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +128,7 @@
 		6E705AC127F4951E004EB42E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				6E705AE727F4A3AA004EB42E /* VFCamaraManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -137,6 +144,7 @@
 		6E705AC327F49530004EB42E /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				6E705ADE27F4A029004EB42E /* Scan */,
 				6E705ACD27F496FD004EB42E /* DocumentReader */,
 			);
 			path = Features;
@@ -158,6 +166,15 @@
 				6E705ADA27F497B5004EB42E /* DocumnetViewModel.swift */,
 			);
 			path = DocumentReader;
+			sourceTree = "<group>";
+		};
+		6E705ADE27F4A029004EB42E /* Scan */ = {
+			isa = PBXGroup;
+			children = (
+				6E705ADF27F4A040004EB42E /* ScanViewController.swift */,
+				6E705AE027F4A040004EB42E /* ScanViewController.xib */,
+			);
+			path = Scan;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,6 +269,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E705AE227F4A040004EB42E /* ScanViewController.xib in Resources */,
 				6E705AC527F49553004EB42E /* assets.xcassets in Resources */,
 				6E705AD127F4971C004EB42E /* DocumentViewController.xib in Resources */,
 			);
@@ -273,6 +291,8 @@
 			files = (
 				6E705ACA27F496D3004EB42E /* Bundle+Extentions.swift in Sources */,
 				6E705ADB27F497B5004EB42E /* DocumnetViewModel.swift in Sources */,
+				6E705AE827F4A3AA004EB42E /* VFCamaraManager.swift in Sources */,
+				6E705AE127F4A040004EB42E /* ScanViewController.swift in Sources */,
 				6E705AD727F4975B004EB42E /* VFDocumnetReader.swift in Sources */,
 				6E705AD027F4971C004EB42E /* DocumentViewController.swift in Sources */,
 			);

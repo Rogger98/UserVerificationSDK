@@ -8,5 +8,12 @@
 import Foundation
 
 extension Bundle {
-    
+ 
+    static var shared: Bundle { Bundle(for: DocumentViewController.self)}
+}
+
+extension NSObject {
+    class var className: String {
+        return "\(self)"
+    }
 }

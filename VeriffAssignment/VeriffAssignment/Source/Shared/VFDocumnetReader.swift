@@ -21,12 +21,17 @@ public class VFDocumentReader {
         
         let viewModel: DocumentReaderViewModel = DocumentReaderViewModel()
         let docViewController: DocumentViewController = DocumentViewController(viewModel: viewModel)
+        viewController.modalPresentationStyle = .fullScreen
         viewController.present(docViewController, animated: true, completion: nil)
     }
     
     /// scan new document with camera
     public func scanNewDocument(from viewController: UIViewController) {
-        
+        let scanViewController = ScanViewController(settings: 1)
+        let navigationViewController: UINavigationController = UINavigationController(rootViewController: scanViewController)
+        navigationViewController.modalPresentationStyle = .fullScreen
+        navigationViewController.navigationBar.isHidden = true
+        viewController.present(navigationViewController, animated: true, completion: nil)
     }
     
 }

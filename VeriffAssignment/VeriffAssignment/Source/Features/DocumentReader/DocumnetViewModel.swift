@@ -14,10 +14,10 @@ enum FacesOnDocument {
 }
 
 protocol DocumentViewModelType {
-    func makeRequest(image: UIImage)
+    func makeRequest(image: UIImage, complition: @escaping(_ face: FacesOnDocument) -> Void) 
     func setUpRequest()
-    func setUpFacedetection(image: UIImage)
-    var isMultipleFaces: FacesOnDocument { get set }
+    func setUpFacedetection(image: UIImage, completion: @escaping(_ face: FacesOnDocument) -> Void)
+    var recognizedText: String { get set }
 }
 
 final class DocumentReaderViewModel : DocumentViewModelType {
@@ -46,7 +46,7 @@ final class DocumentReaderViewModel : DocumentViewModelType {
         })
     }
     
-    func setUpFacedetection(image: UIImage) {
+    func setUpFacedetection(image: UIImage, completion: @escaping(_ face: FacesOnDocument) -> Void) {
         
         let request = VNDetectFaceRectanglesRequest { (req, err) in
             if let err = err {
@@ -54,12 +54,13 @@ final class DocumentReaderViewModel : DocumentViewModelType {
                 return
             }
             if req.results?.count ?? 0 > 1 {
-                self.isMultipleFaces = .moreThanOne
+                completion(.moreThanOne)
             } else if req.results?.count ?? 0 == 1 {
-                self.isMultipleFaces = .single
+                completion(.single)
             } else {
-                self.isMultipleFaces = .none
+                completion(.none)
             }
+            
             req.results?.forEach({ (res) in
                 guard let faceObservation = res as? VNFaceObservation else {return}
                 print(faceObservation.boundingBox)
@@ -77,11 +78,10 @@ final class DocumentReaderViewModel : DocumentViewModelType {
         }
                 
     }
-    func makeRequest(image: UIImage) {
+    func makeRequest(image: UIImage, complition: @escaping(_ face: FacesOnDocument) -> Void) {
         guard let request = textRecognitionRequest else {
             return
         }
-        self.setUpFacedetection(image: image)
         request.recognitionLevel = .accurate
         let handler = VNImageRequestHandler(cgImage: image.cgImage!, options: [:])
         do {
@@ -89,6 +89,7 @@ final class DocumentReaderViewModel : DocumentViewModelType {
         } catch {
             print("❌❌❌ \(error.localizedDescription) ❌❌❌")
         }
+        self.setUpFacedetection(image: image, completion: complition)
     }
 }
 

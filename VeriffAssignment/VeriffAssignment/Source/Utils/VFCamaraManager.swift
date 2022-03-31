@@ -134,7 +134,7 @@ class VFCameraManager: NSObject, AVCaptureFileOutputRecordingDelegate, UIGesture
         var alertController = UIAlertController(title: erTitle, message: erMessage, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (_) -> Void in }))
         
-        if let topController = UIApplication.shared.keyWindow?.rootViewController {
+        if let topController = UIApplication.shared.windows.first?.rootViewController {
             topController.present(alertController, animated: true, completion: nil)
         }
     }

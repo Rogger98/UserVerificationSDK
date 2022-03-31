@@ -28,9 +28,8 @@ class ScanViewController: UIViewController {
     @IBOutlet var cameraButton: UIButton!
     
     
-    let darkBlue = UIColor(red: 4 / 255, green: 14 / 255, blue: 26 / 255, alpha: 1)
-    let lightBlue = UIColor(red: 24 / 255, green: 125 / 255, blue: 251 / 255, alpha: 1)
-    let redColor = UIColor(red: 229 / 255, green: 77 / 255, blue: 67 / 255, alpha: 1)
+    var didVerifiedWithText: ((_ document: DocumentDetails) -> Void)?
+    var errorVerifingDocument: ((_ document: DocumentDetails?, _ error: DocumentVerifyError) -> Void)?
     
     // MARK: - UIViewController
     init(settings: Int) {
@@ -64,21 +63,6 @@ class ScanViewController: UIViewController {
             
         }
         
-        
-        
-//        flashModeImageView.image = UIImage(named: "flash_off")
-//        if cameraManager.hasFlash {
-//            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(changeFlashMode))
-//            flashModeImageView.addGestureRecognizer(tapGesture)
-//        }
-//
-//
-//
-//        cameraTypeImageView.image = UIImage(named: "switch_camera")
-//        let cameraTypeGesture = UITapGestureRecognizer(target: self, action: #selector(changeCameraDevice))
-//        cameraTypeImageView.addGestureRecognizer(cameraTypeGesture)
-        
-        
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -86,17 +70,8 @@ class ScanViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         navigationController?.navigationBar.isHidden = true
         cameraManager.resumeCaptureSession()
-        cameraManager.startQRCodeDetection { result in
-            switch result {
-                case .success(let value):
-                    print(value)
-                case .failure(let error):
-                    print(error.localizedDescription)
-            }
-        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -131,32 +106,34 @@ class ScanViewController: UIViewController {
     
     @IBAction func changeFlashMode(_ sender: UIButton) {
         switch cameraManager.changeFlashMode() {
-            case .off:
-                flashModeImageView.image = UIImage(named: "flash_off")
-            case .on:
-                flashModeImageView.image = UIImage(named: "flash_on")
-            case .auto:
-                flashModeImageView.image = UIImage(named: "flash_auto")
+        case .off:
+            flashModeImageView.image = UIImage(named: "flash_off")
+        case .on:
+            flashModeImageView.image = UIImage(named: "flash_on")
+        case .auto:
+            flashModeImageView.image = UIImage(named: "flash_auto")
         }
     }
     
     @IBAction func didTappedCapture(_ sender: UIButton) {
         cameraManager.capturePictureWithCompletion { result in
             switch result {
-                case .failure:
-                    self.cameraManager.showErrorBlock("Error occurred", "Cannot save picture.")
-                case .success(let content):
-                    print("Display Image");
-                    let viewModel = DocumentReaderViewModel()
-                    let docViewController = DocumentViewController(viewModel: viewModel)
-                    docViewController.image = content.asImage
-                    self.navigationController?.pushViewController(docViewController, animated: true)
+            case .failure:
+                self.cameraManager.showErrorBlock("Error occurred", "Cannot save picture.")
+            case .success(let content):
+                print("Display Image");
+                let viewModel = DocumentReaderViewModel()
+                let docViewController = DocumentViewController(viewModel: viewModel)
+                docViewController.image = content.asImage
+                docViewController.didVerifiedWithText = self.didVerifiedWithText
+                docViewController.errorVerifingDocument = self.errorVerifingDocument
+                self.navigationController?.pushViewController(docViewController, animated: true)
             }
         }
     }
     
     
-   
+    
     
     @IBAction func changeCameraDevice() {
         cameraManager.cameraDevice = cameraManager.cameraDevice == CameraDevice.front ? CameraDevice.back : CameraDevice.front
@@ -176,7 +153,15 @@ class ScanViewController: UIViewController {
             }
         }
     }
-   
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        get {
+            return .portrait
+        }
+    }
+    override var shouldAutorotate: Bool {
+        false
+    }
 }
 
 public extension Data {

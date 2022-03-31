@@ -25,10 +25,27 @@ public class VFDocumentReader {
         viewController.present(docViewController, animated: true, completion: nil)
     }
     
+    
+    
     /// scan new document with camera
-    public func scanNewDocument(from viewController: UIViewController) {
+    public func scanNewDocument(from viewController: UIViewController,
+                                didVerifiedWithText: @escaping ((_ document: DocumentDetails) -> Void),
+                                errorVerifingDocument: @escaping ((_ document: DocumentDetails?, _ error: DocumentVerifyError) -> Void)) {
+    
+        let documentsTypeViewModle: DocumentTypesViewModel = DocumentTypesViewModel()
+        let documentsViewController: DocumentTypesViewController = DocumentTypesViewController(viewModel: documentsTypeViewModle)
+        let navigationViewController: VFNavigationController = VFNavigationController(rootViewController: documentsViewController)
+        navigationViewController.modalPresentationStyle = .fullScreen
+        viewController.present(navigationViewController, animated: true, completion: nil)
+    }
+    
+    private func scanDocumentFromCamera(from viewController: UIViewController,
+                                        didVerifiedWithText: @escaping ((_ document: DocumentDetails) -> Void),
+                                        errorVerifingDocument: @escaping ((_ document: DocumentDetails?, _ error: DocumentVerifyError) -> Void)) {
         let scanViewController = ScanViewController(settings: 1)
-        let navigationViewController: UINavigationController = UINavigationController(rootViewController: scanViewController)
+        scanViewController.didVerifiedWithText = didVerifiedWithText
+        scanViewController.errorVerifingDocument = errorVerifingDocument
+        let navigationViewController: VFNavigationController = VFNavigationController(rootViewController: scanViewController)
         navigationViewController.modalPresentationStyle = .fullScreen
         navigationViewController.navigationBar.isHidden = true
         viewController.present(navigationViewController, animated: true, completion: nil)

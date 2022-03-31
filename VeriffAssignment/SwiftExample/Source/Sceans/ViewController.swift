@@ -18,7 +18,12 @@ class ViewController: UIViewController {
 
 
     @IBAction func didTapOnScan() {
-        VFDocumentReader.shared.scanNewDocument(from: self)
+        VFDocumentReader.shared.scanNewDocument(from: self) { (details) in
+            
+        } errorVerifingDocument: { (doc, error) in
+            
+        }
+
     }
     
     @IBAction func didTapOnManually() {

@@ -91,3 +91,30 @@ extension VFDocumentType {
         }
     }
 }
+
+enum FacesOnDocument {
+    case none
+    case single
+    case moreThanOne
+}
+
+public enum DocumentVerifyError : Error {
+    case noPhotoIdentity
+    case noDocumentDetails
+    case faceNotRecognize
+}
+
+extension DocumentVerifyError : LocalizedError {
+    
+    public var errorDescription: String?{
+        switch self {
+        case .faceNotRecognize:
+            return StringConstants.DocumentErrors.faceNotRecognize.localized
+        case .noDocumentDetails:
+            return StringConstants.DocumentErrors.noDocumentDetails.localized
+        case .noPhotoIdentity:
+            return StringConstants.DocumentErrors.noPhotoIdentity.localized
+        }
+    }
+    
+}

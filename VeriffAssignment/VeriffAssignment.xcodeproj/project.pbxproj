@@ -15,7 +15,6 @@
 		6E705AD027F4971C004EB42E /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E705ACE27F4971C004EB42E /* DocumentViewController.swift */; };
 		6E705AD127F4971C004EB42E /* DocumentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E705ACF27F4971C004EB42E /* DocumentViewController.xib */; };
 		6E705AD727F4975B004EB42E /* VFDocumnetReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E705AD627F4975B004EB42E /* VFDocumnetReader.swift */; };
-		6E705ADB27F497B5004EB42E /* DocumnetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E705ADA27F497B5004EB42E /* DocumnetViewModel.swift */; };
 		6E705AE127F4A040004EB42E /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E705ADF27F4A040004EB42E /* ScanViewController.swift */; };
 		6E705AE227F4A040004EB42E /* ScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E705AE027F4A040004EB42E /* ScanViewController.xib */; };
 		6E705B3427F4B2DE004EB42E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E705B3327F4B2DE004EB42E /* AppDelegate.swift */; };
@@ -34,12 +33,30 @@
 		6EA2241627F56C9C001459C4 /* VFNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA2241527F56C9C001459C4 /* VFNavigationController.swift */; };
 		6EA2241E27F5732C001459C4 /* DocumentTypesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA2241C27F5732C001459C4 /* DocumentTypesViewController.swift */; };
 		6EA2241F27F5732C001459C4 /* DocumentTypesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EA2241D27F5732C001459C4 /* DocumentTypesViewController.xib */; };
-		6EA2242927F5733E001459C4 /* DocumentTypesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA2242827F5733E001459C4 /* DocumentTypesViewModel.swift */; };
 		6EA2243127F5737D001459C4 /* DocumentTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA2242F27F5737D001459C4 /* DocumentTypeCell.swift */; };
 		6EA2243227F5737D001459C4 /* DocumentTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EA2243027F5737D001459C4 /* DocumentTypeCell.xib */; };
-		6EA2243C27F574AF001459C4 /* DocumentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA2243B27F574AF001459C4 /* DocumentType.swift */; };
 		6EA2244227F57586001459C4 /* UITableView+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA2244127F57586001459C4 /* UITableView+Extentions.swift */; };
 		6EA2245827F587C3001459C4 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EA2245727F587C3001459C4 /* Media.xcassets */; };
+		6EEAA8E727F6ABEC00D1C771 /* SPAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEAA8D527F6ABEC00D1C771 /* SPAlertView.swift */; };
+		6EEAA8E827F6ABEC00D1C771 /* SPAlertLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEAA8D727F6ABEC00D1C771 /* SPAlertLayout.swift */; };
+		6EEAA8E927F6ABEC00D1C771 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEAA8D927F6ABEC00D1C771 /* UILabelExtension.swift */; };
+		6EEAA8EA27F6ABEC00D1C771 /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEAA8DA27F6ABEC00D1C771 /* UIFontExtension.swift */; };
+		6EEAA8EB27F6ABEC00D1C771 /* SwiftUIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEAA8DB27F6ABEC00D1C771 /* SwiftUIExtension.swift */; };
+		6EEAA8EC27F6ABEC00D1C771 /* SPAlertIconPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEAA8DC27F6ABEC00D1C771 /* SPAlertIconPreset.swift */; };
+		6EEAA8ED27F6ABEC00D1C771 /* SPAlertIconHeartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEAA8DE27F6ABEC00D1C771 /* SPAlertIconHeartView.swift */; };
+		6EEAA8EE27F6ABEC00D1C771 /* SPAlertSpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEAA8DF27F6ABEC00D1C771 /* SPAlertSpinnerView.swift */; };
+		6EEAA8EF27F6ABEC00D1C771 /* SPAlertIconErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEAA8E027F6ABEC00D1C771 /* SPAlertIconErrorView.swift */; };
+		6EEAA8F027F6ABEC00D1C771 /* SPAlertIconDoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEAA8E127F6ABEC00D1C771 /* SPAlertIconDoneView.swift */; };
+		6EEAA8F127F6ABEC00D1C771 /* SPAlertIconAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEAA8E327F6ABEC00D1C771 /* SPAlertIconAnimatable.swift */; };
+		6EEAA8F227F6ABEC00D1C771 /* SPAlertHaptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEAA8E527F6ABEC00D1C771 /* SPAlertHaptic.swift */; };
+		6EEAA8F327F6ABEC00D1C771 /* SPAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEAA8E627F6ABEC00D1C771 /* SPAlert.swift */; };
+		6EEAA8FC27F6B7D000D1C771 /* DocumentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEAA8FB27F6B7D000D1C771 /* DocumentType.swift */; };
+		6EEAA90627F6B81600D1C771 /* SelfieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEAA90427F6B81600D1C771 /* SelfieViewController.swift */; };
+		6EEAA90727F6B81600D1C771 /* SelfieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EEAA90527F6B81600D1C771 /* SelfieViewController.xib */; };
+		6EEAA91727F6C59F00D1C771 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEAA91627F6C59F00D1C771 /* Colors.swift */; };
+		6EEAA92E27F727AC00D1C771 /* TakeSelfieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEAA92C27F727AC00D1C771 /* TakeSelfieViewController.swift */; };
+		6EEAA92F27F727AC00D1C771 /* TakeSelfieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EEAA92D27F727AC00D1C771 /* TakeSelfieViewController.xib */; };
+		6EEAA93827F72E6300D1C771 /* DispatchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEAA93727F72E6300D1C771 /* DispatchHelper.swift */; };
 		6EF7B08D27F5D9E600113CA0 /* SelfieHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF7B08C27F5D9E600113CA0 /* SelfieHelper.swift */; };
 		6EF7B09227F5DAF700113CA0 /* OvalOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF7B09127F5DAF700113CA0 /* OvalOverlayView.swift */; };
 /* End PBXBuildFile section */
@@ -87,7 +104,6 @@
 		6E705ACE27F4971C004EB42E /* DocumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentViewController.swift; sourceTree = "<group>"; };
 		6E705ACF27F4971C004EB42E /* DocumentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DocumentViewController.xib; sourceTree = "<group>"; };
 		6E705AD627F4975B004EB42E /* VFDocumnetReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VFDocumnetReader.swift; sourceTree = "<group>"; };
-		6E705ADA27F497B5004EB42E /* DocumnetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumnetViewModel.swift; sourceTree = "<group>"; };
 		6E705ADF27F4A040004EB42E /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		6E705AE027F4A040004EB42E /* ScanViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScanViewController.xib; sourceTree = "<group>"; };
 		6E705B3127F4B2DE004EB42E /* SwiftExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,12 +124,30 @@
 		6EA2241527F56C9C001459C4 /* VFNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VFNavigationController.swift; sourceTree = "<group>"; };
 		6EA2241C27F5732C001459C4 /* DocumentTypesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTypesViewController.swift; sourceTree = "<group>"; };
 		6EA2241D27F5732C001459C4 /* DocumentTypesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DocumentTypesViewController.xib; sourceTree = "<group>"; };
-		6EA2242827F5733E001459C4 /* DocumentTypesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTypesViewModel.swift; sourceTree = "<group>"; };
 		6EA2242F27F5737D001459C4 /* DocumentTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTypeCell.swift; sourceTree = "<group>"; };
 		6EA2243027F5737D001459C4 /* DocumentTypeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DocumentTypeCell.xib; sourceTree = "<group>"; };
-		6EA2243B27F574AF001459C4 /* DocumentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentType.swift; sourceTree = "<group>"; };
 		6EA2244127F57586001459C4 /* UITableView+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extentions.swift"; sourceTree = "<group>"; };
 		6EA2245727F587C3001459C4 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		6EEAA8D527F6ABEC00D1C771 /* SPAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPAlertView.swift; sourceTree = "<group>"; };
+		6EEAA8D727F6ABEC00D1C771 /* SPAlertLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPAlertLayout.swift; sourceTree = "<group>"; };
+		6EEAA8D927F6ABEC00D1C771 /* UILabelExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
+		6EEAA8DA27F6ABEC00D1C771 /* UIFontExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
+		6EEAA8DB27F6ABEC00D1C771 /* SwiftUIExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftUIExtension.swift; sourceTree = "<group>"; };
+		6EEAA8DC27F6ABEC00D1C771 /* SPAlertIconPreset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPAlertIconPreset.swift; sourceTree = "<group>"; };
+		6EEAA8DE27F6ABEC00D1C771 /* SPAlertIconHeartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPAlertIconHeartView.swift; sourceTree = "<group>"; };
+		6EEAA8DF27F6ABEC00D1C771 /* SPAlertSpinnerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPAlertSpinnerView.swift; sourceTree = "<group>"; };
+		6EEAA8E027F6ABEC00D1C771 /* SPAlertIconErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPAlertIconErrorView.swift; sourceTree = "<group>"; };
+		6EEAA8E127F6ABEC00D1C771 /* SPAlertIconDoneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPAlertIconDoneView.swift; sourceTree = "<group>"; };
+		6EEAA8E327F6ABEC00D1C771 /* SPAlertIconAnimatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPAlertIconAnimatable.swift; sourceTree = "<group>"; };
+		6EEAA8E527F6ABEC00D1C771 /* SPAlertHaptic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPAlertHaptic.swift; sourceTree = "<group>"; };
+		6EEAA8E627F6ABEC00D1C771 /* SPAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPAlert.swift; sourceTree = "<group>"; };
+		6EEAA8FB27F6B7D000D1C771 /* DocumentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentType.swift; sourceTree = "<group>"; };
+		6EEAA90427F6B81600D1C771 /* SelfieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieViewController.swift; sourceTree = "<group>"; };
+		6EEAA90527F6B81600D1C771 /* SelfieViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelfieViewController.xib; sourceTree = "<group>"; };
+		6EEAA91627F6C59F00D1C771 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		6EEAA92C27F727AC00D1C771 /* TakeSelfieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeSelfieViewController.swift; sourceTree = "<group>"; };
+		6EEAA92D27F727AC00D1C771 /* TakeSelfieViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TakeSelfieViewController.xib; sourceTree = "<group>"; };
+		6EEAA93727F72E6300D1C771 /* DispatchHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchHelper.swift; sourceTree = "<group>"; };
 		6EF7B08C27F5D9E600113CA0 /* SelfieHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieHelper.swift; sourceTree = "<group>"; };
 		6EF7B09127F5DAF700113CA0 /* OvalOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvalOverlayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -217,6 +251,7 @@
 		6E705AC127F4951E004EB42E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				6EEAA8D427F6ABEC00D1C771 /* SPAlert */,
 				6EA223FD27F5616B001459C4 /* SwiftLoader.swift */,
 				6EA2241527F56C9C001459C4 /* VFNavigationController.swift */,
 				6EF7B08C27F5D9E600113CA0 /* SelfieHelper.swift */,
@@ -231,6 +266,7 @@
 				6EA2240927F56A5F001459C4 /* Localizable.strings */,
 				6EA2240F27F56A78001459C4 /* StringConstatns.swift */,
 				6EA2245727F587C3001459C4 /* Media.xcassets */,
+				6EEAA91627F6C59F00D1C771 /* Colors.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -238,6 +274,8 @@
 		6E705AC327F49530004EB42E /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				6EEAA92B27F7279800D1C771 /* TakeSelfie */,
+				6EEAA90327F6B7EF00D1C771 /* Selfie */,
 				6EA2241B27F57312001459C4 /* DocumentType */,
 				6E705ADE27F4A029004EB42E /* Scan */,
 				6E705ACD27F496FD004EB42E /* DocumentReader */,
@@ -261,7 +299,6 @@
 			children = (
 				6E705ACE27F4971C004EB42E /* DocumentViewController.swift */,
 				6E705ACF27F4971C004EB42E /* DocumentViewController.xib */,
-				6E705ADA27F497B5004EB42E /* DocumnetViewModel.swift */,
 			);
 			path = DocumentReader;
 			sourceTree = "<group>";
@@ -278,6 +315,7 @@
 		6E705B3227F4B2DE004EB42E /* SwiftExample */ = {
 			isa = PBXGroup;
 			children = (
+				6EEAA93627F72E5400D1C771 /* Utils */,
 				6E705B6727F4B2F1004EB42E /* Application */,
 				6E705B6627F4B2EB004EB42E /* Source */,
 				6E705B3927F4B2DE004EB42E /* Main.storyboard */,
@@ -335,8 +373,7 @@
 				6EA2242E27F57364001459C4 /* View */,
 				6EA2241C27F5732C001459C4 /* DocumentTypesViewController.swift */,
 				6EA2241D27F5732C001459C4 /* DocumentTypesViewController.xib */,
-				6EA2242827F5733E001459C4 /* DocumentTypesViewModel.swift */,
-				6EA2243B27F574AF001459C4 /* DocumentType.swift */,
+				6EEAA8FB27F6B7D000D1C771 /* DocumentType.swift */,
 			);
 			path = DocumentType;
 			sourceTree = "<group>";
@@ -348,6 +385,92 @@
 				6EA2243027F5737D001459C4 /* DocumentTypeCell.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		6EEAA8D427F6ABEC00D1C771 /* SPAlert */ = {
+			isa = PBXGroup;
+			children = (
+				6EEAA8D527F6ABEC00D1C771 /* SPAlertView.swift */,
+				6EEAA8D627F6ABEC00D1C771 /* Models */,
+				6EEAA8D827F6ABEC00D1C771 /* Extensions */,
+				6EEAA8DC27F6ABEC00D1C771 /* SPAlertIconPreset.swift */,
+				6EEAA8DD27F6ABEC00D1C771 /* Preset Views */,
+				6EEAA8E227F6ABEC00D1C771 /* Protocols */,
+				6EEAA8E427F6ABEC00D1C771 /* Services */,
+				6EEAA8E627F6ABEC00D1C771 /* SPAlert.swift */,
+			);
+			path = SPAlert;
+			sourceTree = "<group>";
+		};
+		6EEAA8D627F6ABEC00D1C771 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6EEAA8D727F6ABEC00D1C771 /* SPAlertLayout.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6EEAA8D827F6ABEC00D1C771 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6EEAA8D927F6ABEC00D1C771 /* UILabelExtension.swift */,
+				6EEAA8DA27F6ABEC00D1C771 /* UIFontExtension.swift */,
+				6EEAA8DB27F6ABEC00D1C771 /* SwiftUIExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		6EEAA8DD27F6ABEC00D1C771 /* Preset Views */ = {
+			isa = PBXGroup;
+			children = (
+				6EEAA8DE27F6ABEC00D1C771 /* SPAlertIconHeartView.swift */,
+				6EEAA8DF27F6ABEC00D1C771 /* SPAlertSpinnerView.swift */,
+				6EEAA8E027F6ABEC00D1C771 /* SPAlertIconErrorView.swift */,
+				6EEAA8E127F6ABEC00D1C771 /* SPAlertIconDoneView.swift */,
+			);
+			path = "Preset Views";
+			sourceTree = "<group>";
+		};
+		6EEAA8E227F6ABEC00D1C771 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				6EEAA8E327F6ABEC00D1C771 /* SPAlertIconAnimatable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		6EEAA8E427F6ABEC00D1C771 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				6EEAA8E527F6ABEC00D1C771 /* SPAlertHaptic.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		6EEAA90327F6B7EF00D1C771 /* Selfie */ = {
+			isa = PBXGroup;
+			children = (
+				6EEAA90427F6B81600D1C771 /* SelfieViewController.swift */,
+				6EEAA90527F6B81600D1C771 /* SelfieViewController.xib */,
+			);
+			path = Selfie;
+			sourceTree = "<group>";
+		};
+		6EEAA92B27F7279800D1C771 /* TakeSelfie */ = {
+			isa = PBXGroup;
+			children = (
+				6EEAA92C27F727AC00D1C771 /* TakeSelfieViewController.swift */,
+				6EEAA92D27F727AC00D1C771 /* TakeSelfieViewController.xib */,
+			);
+			path = TakeSelfie;
+			sourceTree = "<group>";
+		};
+		6EEAA93627F72E5400D1C771 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				6EEAA93727F72E6300D1C771 /* DispatchHelper.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -487,6 +610,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EEAA90727F6B81600D1C771 /* SelfieViewController.xib in Resources */,
+				6EEAA92F27F727AC00D1C771 /* TakeSelfieViewController.xib in Resources */,
 				6E705AE227F4A040004EB42E /* ScanViewController.xib in Resources */,
 				6EA2241F27F5732C001459C4 /* DocumentTypesViewController.xib in Resources */,
 				6EA2245827F587C3001459C4 /* Media.xcassets in Resources */,
@@ -527,21 +652,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EEAA8F127F6ABEC00D1C771 /* SPAlertIconAnimatable.swift in Sources */,
+				6EEAA8EC27F6ABEC00D1C771 /* SPAlertIconPreset.swift in Sources */,
 				6EF7B09227F5DAF700113CA0 /* OvalOverlayView.swift in Sources */,
 				6EA2243127F5737D001459C4 /* DocumentTypeCell.swift in Sources */,
 				6EA223FE27F5616B001459C4 /* SwiftLoader.swift in Sources */,
+				6EEAA91727F6C59F00D1C771 /* Colors.swift in Sources */,
 				6E705ACA27F496D3004EB42E /* Bundle+Extentions.swift in Sources */,
-				6E705ADB27F497B5004EB42E /* DocumnetViewModel.swift in Sources */,
 				6EA2244227F57586001459C4 /* UITableView+Extentions.swift in Sources */,
 				6EF7B08D27F5D9E600113CA0 /* SelfieHelper.swift in Sources */,
+				6EEAA8EE27F6ABEC00D1C771 /* SPAlertSpinnerView.swift in Sources */,
+				6EEAA8ED27F6ABEC00D1C771 /* SPAlertIconHeartView.swift in Sources */,
 				6EA2240427F5641E001459C4 /* UIViewController+Extentions.swift in Sources */,
+				6EEAA8FC27F6B7D000D1C771 /* DocumentType.swift in Sources */,
 				6EA2241027F56A78001459C4 /* StringConstatns.swift in Sources */,
 				6E62299D27F4B9F90036D184 /* UIView+Extentions.swift in Sources */,
+				6EEAA8EA27F6ABEC00D1C771 /* UIFontExtension.swift in Sources */,
+				6EEAA8F227F6ABEC00D1C771 /* SPAlertHaptic.swift in Sources */,
+				6EEAA8E827F6ABEC00D1C771 /* SPAlertLayout.swift in Sources */,
 				6E705AE127F4A040004EB42E /* ScanViewController.swift in Sources */,
+				6EEAA90627F6B81600D1C771 /* SelfieViewController.swift in Sources */,
+				6EEAA8EF27F6ABEC00D1C771 /* SPAlertIconErrorView.swift in Sources */,
+				6EEAA92E27F727AC00D1C771 /* TakeSelfieViewController.swift in Sources */,
+				6EEAA8F327F6ABEC00D1C771 /* SPAlert.swift in Sources */,
+				6EEAA8E927F6ABEC00D1C771 /* UILabelExtension.swift in Sources */,
 				6E705AD727F4975B004EB42E /* VFDocumnetReader.swift in Sources */,
-				6EA2242927F5733E001459C4 /* DocumentTypesViewModel.swift in Sources */,
+				6EEAA8EB27F6ABEC00D1C771 /* SwiftUIExtension.swift in Sources */,
+				6EEAA8F027F6ABEC00D1C771 /* SPAlertIconDoneView.swift in Sources */,
+				6EEAA8E727F6ABEC00D1C771 /* SPAlertView.swift in Sources */,
 				6EA2241E27F5732C001459C4 /* DocumentTypesViewController.swift in Sources */,
-				6EA2243C27F574AF001459C4 /* DocumentType.swift in Sources */,
 				6E705AD027F4971C004EB42E /* DocumentViewController.swift in Sources */,
 				6EA2241627F56C9C001459C4 /* VFNavigationController.swift in Sources */,
 			);
@@ -562,6 +701,7 @@
 				6E705B3827F4B2DE004EB42E /* ViewController.swift in Sources */,
 				6E705B3427F4B2DE004EB42E /* AppDelegate.swift in Sources */,
 				6E705B3627F4B2DE004EB42E /* SceneDelegate.swift in Sources */,
+				6EEAA93827F72E6300D1C771 /* DispatchHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

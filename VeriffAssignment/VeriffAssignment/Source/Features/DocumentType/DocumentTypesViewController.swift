@@ -11,11 +11,13 @@ class DocumentTypesViewController: UIViewController {
 
     // MARK: - Outlets
     @IBOutlet var tableView: UITableView?
-    
-    let viewModel: DocumentTypesViewModelType
+        
     var arrayDocuments: [VFDocumentType] = []
-    init(viewModel: DocumentTypesViewModelType) {
-        self.viewModel = viewModel
+    
+    var didVerifiedWithText:  ((_ document: DocumentDetails) -> Void)?
+    var errorVerifingDocument: ((_ document: DocumentDetails?, _ error: DocumentVerifyError) -> Void)?
+    
+    init() {
         super.init(nibName: DocumentTypesViewController.className, bundle: Bundle.shared)
     }
     
@@ -34,9 +36,13 @@ class DocumentTypesViewController: UIViewController {
         arrayDocuments.append(contentsOf: docs)
         title = StringConstants.DocumentTypesScreen.title.localized
         navigationController?.navigationBar.prefersLargeTitles = true
-        
-    }
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTap))
 
+    }
+    
+    @objc func cancelTap() {
+        navigationController?.dismiss(animated: true, completion: nil)
+    }
 }
 extension DocumentTypesViewController : UITableViewDataSource, UITableViewDelegate {
     
@@ -50,10 +56,11 @@ extension DocumentTypesViewController : UITableViewDataSource, UITableViewDelega
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.didSelectedDocument(arrayDocuments[indexPath.row])
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {        
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             let scanController = ScanViewController(VFDocumentType.allCases[indexPath.row])
+            scanController.didVerifiedWithText = didVerifiedWithText
+            scanController.errorVerifingDocument = errorVerifingDocument
             navigationController?.pushViewController(scanController, animated: true)
         } else {
             showAlert(title: StringConstants.AlertTitle.noCamera.localized, message: StringConstants.AlertMessages.cameraNotAvailable.localized)

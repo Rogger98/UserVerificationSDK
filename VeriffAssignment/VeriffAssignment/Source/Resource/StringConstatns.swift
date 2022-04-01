@@ -74,5 +74,12 @@ struct StringConstants {
         case frontDescription
         static var prefix: String { return "Selfie" }
     }
+    
+    enum DocumentErrors: String, StringLocalizable {
+        case noPhotoIdentity
+        case noDocumentDetails
+        case faceNotRecognize        
+        static var prefix: String { return "DocumentErrors" }
+    }
 }
 

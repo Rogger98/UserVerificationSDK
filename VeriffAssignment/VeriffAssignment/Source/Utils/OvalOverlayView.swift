@@ -12,14 +12,16 @@ internal class OvalOverlayView: UIView {
     let screenBounds = UIScreen.main.bounds
     var overlayFrame: CGRect!
 
-    internal init() {
+    let bgColor: UIColor
+    internal init(bgColor: UIColor) {
+        self.bgColor = bgColor
         super.init(frame: screenBounds)
         backgroundColor = UIColor.clear
         accessibilityIdentifier = "takeASelfieOvalOverlayView"
-        overlayFrame = CGRect(x: (screenBounds.width - 300.0) / 2,
+        overlayFrame = CGRect(x: (screenBounds.width - 320.0) / 2,
                               y: (screenBounds.height - 500.0) / 2,
                               width: 300.0,
-                              height: 400.0)
+                              height: 450.0)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -35,13 +37,13 @@ internal class OvalOverlayView: UIView {
         let ovalLayer = CAShapeLayer()
         ovalLayer.path = ovalPath.cgPath
         ovalLayer.fillColor = UIColor.clear.cgColor
-        ovalLayer.strokeColor = UIColor.green.cgColor
-        ovalLayer.lineWidth = 5.0
+        ovalLayer.strokeColor = UIColor.white.cgColor
+        ovalLayer.lineWidth = 1.0
         // draw layer that fills the view
         let fillLayer = CAShapeLayer()
         fillLayer.path = overlayPath.cgPath
         fillLayer.fillRule = CAShapeLayerFillRule.evenOdd
-        fillLayer.fillColor = UIColor.black.withAlphaComponent(0.3).cgColor
+        fillLayer.fillColor = bgColor.cgColor
         // add layers
         layer.addSublayer(fillLayer)
         layer.addSublayer(ovalLayer)

@@ -1,15 +1,14 @@
 //
-//  ScanViewController.swift
+//  TakeSelfieViewController.swift
 //  VeriffAssignment
 //
-//  Created by psagc on 30/03/22.
+//  Created by psagc on 01/04/22.
 //
 
 import UIKit
-import CoreLocation
 import AVKit
 
-class ScanViewController: UIViewController {
+class TakeSelfieViewController: UIViewController {
     
     @IBOutlet weak var previewView: UIView!
     @IBOutlet weak var captureButton: UIButton!
@@ -19,17 +18,20 @@ class ScanViewController: UIViewController {
     var captureSession: AVCaptureSession?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var capturePhotoOutput: AVCapturePhotoOutput?
+    private let faceDetector = CIDetector(ofType: CIDetectorTypeFace,
+                                          context: nil,
+                                          options: [CIDetectorAccuracy: CIDetectorAccuracyHigh])
     private let ovalOverlayView = OvalOverlayView(bgColor: UIColor.black.withAlphaComponent(0.3))
     
     var didVerifiedWithText: ((_ document: DocumentDetails) -> Void)?
     var errorVerifingDocument: ((_ document: DocumentDetails?, _ error: DocumentVerifyError) -> Void)?
     
-    var documentType: VFDocumentType
     
     
-    init(_ documentType: VFDocumentType) {
-        self.documentType = documentType
-        super.init(nibName: ScanViewController.className, bundle: Bundle.shared)
+    let documentDetails: DocumentDetails
+    init(_ documentDetails: DocumentDetails) {
+        self.documentDetails = documentDetails
+        super.init(nibName: TakeSelfieViewController.className, bundle: Bundle.shared)
     }
     
     required init?(coder: NSCoder) {
@@ -53,10 +55,11 @@ class ScanViewController: UIViewController {
     }
     private func setupUI() {
         
-        labelDescription.text = documentType.frontDescription
+        
         // Get an instance of the AVCaptureDevice class to initialize a device object and provide the video as the media type parameter
-        let position: AVCaptureDevice.Position = documentType == .selfie ? AVCaptureDevice.Position.front : AVCaptureDevice.Position.back
-        guard let captureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: position) else {
+        labelDescription.text = VFDocumentType.selfie.frontDescription
+        
+        guard let captureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front) else {
             fatalError("No video device found")
         }
         do {
@@ -104,24 +107,7 @@ class ScanViewController: UIViewController {
         setupOverlay()
     }
     private func setupOverlay() {
-        let camPreviewBounds = view.bounds
-        let cropRect = CGRect(
-            x: 10,
-            y: 100,
-            width: previewView.bounds.width - 20,
-            height: 250
-        )
-        
-        let path = UIBezierPath(roundedRect: camPreviewBounds, cornerRadius: 0)
-        path.append(UIBezierPath(rect: cropRect))
-        
-        let layer = CAShapeLayer()
-        layer.path = path.cgPath
-        layer.fillRule = CAShapeLayerFillRule.evenOdd;
-        layer.fillColor = UIColor.black.cgColor
-        layer.opacity = 0.5;
-        
-        previewView.layer.addSublayer(layer)
+        previewView.addSubview(ovalOverlayView)
     }
     
     override func didReceiveMemoryWarning() {
@@ -136,7 +122,7 @@ class ScanViewController: UIViewController {
         // Get an instance of AVCapturePhotoSettings class
         let photoSettings = AVCapturePhotoSettings()
         
-        // Set photo settings for our need        
+        // Set photo settings for our need
         photoSettings.isHighResolutionPhotoEnabled = true
         photoSettings.flashMode = .auto
         // Call capturePhoto method by passing our photo settings and a delegate implementing AVCapturePhotoCaptureDelegate
@@ -144,12 +130,11 @@ class ScanViewController: UIViewController {
     }
     
     private func moveToPreview(image: UIImage) {
-        let documentController: DocumentViewController = DocumentViewController(documentType: documentType,image: image)
-        documentController.didVerifiedWithText = didVerifiedWithText
-        documentController.errorVerifingDocument = errorVerifingDocument
-        self.navigationController?.pushViewController(documentController, animated: true)
+        let selfieController = SelfieViewController(documentDetails: documentDetails, documentType: .selfie, image: image)
+        selfieController.didVerifiedWithText = didVerifiedWithText
+        selfieController.errorVerifingDocument = errorVerifingDocument
+        navigationController?.pushViewController(selfieController, animated: true)
     }
-    
     private func cropToPreviewLayer(from originalImage: UIImage, toSizeOf rect: CGRect) -> UIImage? {
         guard let cgImage = originalImage.cgImage else { return nil }
         
@@ -169,7 +154,7 @@ class ScanViewController: UIViewController {
     }
 }
 
-extension ScanViewController : AVCapturePhotoCaptureDelegate {
+extension TakeSelfieViewController : AVCapturePhotoCaptureDelegate {
     
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         
@@ -201,39 +186,7 @@ extension ScanViewController : AVCapturePhotoCaptureDelegate {
         
         let imageToSave = UIImage(cgImage: imageRef, scale: 1.0, orientation: .right)
         
-        
-        let rect = CGRect(x: (width - height)/2, y: 100, width: (width / 2), height: 350)
-        if let croppedImage = self.cropToPreviewLayer(from: imageToSave, toSizeOf: rect) {
-            moveToPreview(image: croppedImage)
-            
-        }
+        moveToPreview(image: imageToSave)
     }
 }
 
-
-
-extension UIInterfaceOrientation {
-    var videoOrientation: AVCaptureVideoOrientation? {
-        switch self {
-        case .portraitUpsideDown: return .portraitUpsideDown
-        case .landscapeRight: return .landscapeRight
-        case .landscapeLeft: return .landscapeLeft
-        case .portrait: return .portrait
-        default: return nil
-        }
-    }
-}
-
-
-extension AVCaptureVideoPreviewLayer {
-    func rectOfInterestConverted(parentRect: CGRect, fromLayerRect: CGRect) -> CGRect {
-        let parentWidth = parentRect.width
-        let parentHeight = parentRect.height
-        let newX = (parentWidth - fromLayerRect.maxX)/parentWidth
-        let newY = 1 - (parentHeight - fromLayerRect.minY)/parentHeight
-        let width = 1 - (fromLayerRect.minX/parentWidth + newX)
-        let height = (fromLayerRect.maxY/parentHeight) - newY
-        
-        return CGRect(x: newX, y: newY, width: width, height: height)
-    }
-}

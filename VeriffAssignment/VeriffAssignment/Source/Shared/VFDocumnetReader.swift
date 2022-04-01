@@ -15,14 +15,14 @@ public class VFDocumentReader {
     public static var shared: VFDocumentReader = VFDocumentReader()
     
     
+    
     /// scan new document with camera
     public func scanNewDocument(from viewController: UIViewController,
-                                didVerifiedWithText: @escaping ((_ document: DocumentDetails) -> Void),
+                                didVerified: @escaping ((_ document: DocumentDetails) -> Void),
                                 errorVerifingDocument: @escaping ((_ document: DocumentDetails?, _ error: DocumentVerifyError) -> Void)) {
-        
-        
-        let documentsTypeViewModle: DocumentTypesViewModel = DocumentTypesViewModel()
-        let documentsViewController: DocumentTypesViewController = DocumentTypesViewController(viewModel: documentsTypeViewModle)
+        let documentsViewController: DocumentTypesViewController = DocumentTypesViewController()
+        documentsViewController.didVerifiedWithText = didVerified
+        documentsViewController.errorVerifingDocument = errorVerifingDocument
         let navigationViewController: VFNavigationController = VFNavigationController(rootViewController: documentsViewController)
         navigationViewController.modalPresentationStyle = .fullScreen
         viewController.present(navigationViewController, animated: true, completion: nil)

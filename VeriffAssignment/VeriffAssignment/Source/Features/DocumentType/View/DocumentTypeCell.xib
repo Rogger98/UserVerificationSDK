@@ -24,7 +24,7 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_documentTypes" translatesAutoresizingMaskIntoConstraints="NO" id="fl8-Gu-UxN">
                                 <rect key="frame" x="0.0" y="7.5" width="60" height="60"/>
-                                <color key="backgroundColor" name="Color"/>
+                                <color key="backgroundColor" name="tintColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="5gd-XW-EXW"/>
                                     <constraint firstAttribute="height" constant="60" id="8gy-Hm-CTJ"/>
@@ -74,6 +74,9 @@
         <image name="icon_documentTypes" width="30" height="30"/>
         <namedColor name="Color">
             <color red="0.082000002264976501" green="0.68999999761581421" blue="0.60000002384185791" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="tintColor">
+            <color red="0.078431372549019607" green="0.68627450980392157" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

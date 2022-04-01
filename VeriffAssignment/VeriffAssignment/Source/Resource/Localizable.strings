@@ -6,7 +6,7 @@
 
 
 // Document Type Screen
-"DocumentTypesScreen.title" = "Select document";
+"DocumentTypesScreen.title" = "Select a document";
 
 
 // Alert Titles
@@ -14,7 +14,7 @@
 
 
 // Alert Messages
-"AlertMessages.cameraNotAvailable" = "Camara not available in your device or try to restart app.";
+"AlertMessages.cameraNotAvailable" = "Camara not available in your device or try after restart app.";
 
 
 // IDentity Card
@@ -41,3 +41,8 @@
 "Selfie.name" = "Take a selfie";
 "Selfie.shortName" = "selfie";
 "Selfie.frontDescription" = "Position your face in oval.";
+
+// Error
+"DocumentErrors.noPhotoIdentity" = "Face not recognisable on document.";
+"DocumentErrors.noDocumentDetails" = "Document not visable.";
+"DocumentErrors.faceNotRecognize" = "Face not recognisable";

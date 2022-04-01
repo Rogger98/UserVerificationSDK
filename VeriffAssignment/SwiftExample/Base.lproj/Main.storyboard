@@ -18,20 +18,42 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OE3-t5-C07">
-                                <rect key="frame" x="165" y="438" width="84" height="30"/>
+                                <rect key="frame" x="165" y="144" width="84" height="30"/>
                                 <state key="normal" title="Launch SDK"/>
                                 <connections>
                                     <action selector="didTapOnLaunchSDK" destination="BYZ-38-t0r" eventType="touchUpInside" id="wvJ-tI-2iq"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tod-Ed-ZrC">
+                                <rect key="frame" x="10" y="244" width="80" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="XLa-be-PFF"/>
+                                    <constraint firstAttribute="width" constant="80" id="gFA-rN-y78"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ldv-aD-J4R">
+                                <rect key="frame" x="110" y="244" width="294" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="OE3-t5-C07" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="HQX-3g-jBY"/>
-                            <constraint firstItem="OE3-t5-C07" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="PGw-qY-u3D"/>
+                            <constraint firstItem="tod-Ed-ZrC" firstAttribute="top" secondItem="OE3-t5-C07" secondAttribute="bottom" constant="70" id="Tfj-ei-nkQ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ldv-aD-J4R" secondAttribute="trailing" constant="10" id="Yxg-FF-PZ2"/>
+                            <constraint firstItem="Ldv-aD-J4R" firstAttribute="top" secondItem="tod-Ed-ZrC" secondAttribute="top" id="agd-Eb-dUw"/>
+                            <constraint firstItem="tod-Ed-ZrC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="nPV-l7-nJR"/>
+                            <constraint firstItem="Ldv-aD-J4R" firstAttribute="leading" secondItem="tod-Ed-ZrC" secondAttribute="trailing" constant="20" id="nva-7L-SbE"/>
+                            <constraint firstItem="OE3-t5-C07" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="wjx-Iu-j73"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="tod-Ed-ZrC" id="6DM-O6-cPo"/>
+                        <outlet property="labelDocumentDetails" destination="Ldv-aD-J4R" id="YRq-j0-s7d"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

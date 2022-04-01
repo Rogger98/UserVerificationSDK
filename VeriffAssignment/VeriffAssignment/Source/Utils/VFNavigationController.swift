@@ -18,6 +18,7 @@ class VFNavigationController: UINavigationController {
     
     func setupUI() {
         navigationItem.backButtonTitle = ""
+        navigationBar.tintColor = AppColors.tintColor
     }
     /*
     // MARK: - Navigation

@@ -13,9 +13,12 @@ class VFNavigationController: UINavigationController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setupUI()
     }
     
-
+    func setupUI() {
+        navigationItem.backButtonTitle = ""
+    }
     /*
     // MARK: - Navigation
 

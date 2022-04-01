@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     }
 
 
-    @IBAction func didTapOnScan() {
+    @IBAction func didTapOnLaunchSDK() {
         VFDocumentReader.shared.scanNewDocument(from: self) { (details) in
             
         } errorVerifingDocument: { (doc, error) in
@@ -26,8 +26,5 @@ class ViewController: UIViewController {
 
     }
     
-    @IBAction func didTapOnManually() {
-        
-    }
 }
 

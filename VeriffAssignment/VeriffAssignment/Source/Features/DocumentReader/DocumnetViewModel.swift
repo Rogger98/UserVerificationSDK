@@ -13,14 +13,14 @@ enum FacesOnDocument {
     case moreThanOne
 }
 
-protocol DocumentViewModelType {
+protocol DocumentReaderViewModelType {
     func makeRequest(image: UIImage, complition: @escaping(_ face: FacesOnDocument) -> Void) 
     func setUpRequest()
     func setUpFacedetection(image: UIImage, completion: @escaping(_ face: FacesOnDocument) -> Void)
     var recognizedText: String { get set }
 }
 
-final class DocumentReaderViewModel : DocumentViewModelType {
+final class DocumentReaderViewModel : DocumentReaderViewModelType {
     
     
     var isMultipleFaces: FacesOnDocument = .none

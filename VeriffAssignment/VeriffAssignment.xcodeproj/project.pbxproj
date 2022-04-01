@@ -11,7 +11,6 @@
 		6E705AAD27F494AE004EB42E /* VeriffAssignment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E705AA327F494AE004EB42E /* VeriffAssignment.framework */; };
 		6E705AB227F494AE004EB42E /* VeriffAssignmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E705AB127F494AE004EB42E /* VeriffAssignmentTests.swift */; };
 		6E705AB427F494AE004EB42E /* VeriffAssignment.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E705AA627F494AE004EB42E /* VeriffAssignment.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6E705AC527F49553004EB42E /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E705AC427F49553004EB42E /* assets.xcassets */; };
 		6E705ACA27F496D3004EB42E /* Bundle+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E705AC927F496D3004EB42E /* Bundle+Extentions.swift */; };
 		6E705AD027F4971C004EB42E /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E705ACE27F4971C004EB42E /* DocumentViewController.swift */; };
 		6E705AD127F4971C004EB42E /* DocumentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E705ACF27F4971C004EB42E /* DocumentViewController.xib */; };
@@ -19,7 +18,6 @@
 		6E705ADB27F497B5004EB42E /* DocumnetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E705ADA27F497B5004EB42E /* DocumnetViewModel.swift */; };
 		6E705AE127F4A040004EB42E /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E705ADF27F4A040004EB42E /* ScanViewController.swift */; };
 		6E705AE227F4A040004EB42E /* ScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E705AE027F4A040004EB42E /* ScanViewController.xib */; };
-		6E705AE827F4A3AA004EB42E /* VFCamaraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E705AE727F4A3AA004EB42E /* VFCamaraManager.swift */; };
 		6E705B3427F4B2DE004EB42E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E705B3327F4B2DE004EB42E /* AppDelegate.swift */; };
 		6E705B3627F4B2DE004EB42E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E705B3527F4B2DE004EB42E /* SceneDelegate.swift */; };
 		6E705B3827F4B2DE004EB42E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E705B3727F4B2DE004EB42E /* ViewController.swift */; };
@@ -41,6 +39,9 @@
 		6EA2243227F5737D001459C4 /* DocumentTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EA2243027F5737D001459C4 /* DocumentTypeCell.xib */; };
 		6EA2243C27F574AF001459C4 /* DocumentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA2243B27F574AF001459C4 /* DocumentType.swift */; };
 		6EA2244227F57586001459C4 /* UITableView+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA2244127F57586001459C4 /* UITableView+Extentions.swift */; };
+		6EA2245827F587C3001459C4 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EA2245727F587C3001459C4 /* Media.xcassets */; };
+		6EF7B08D27F5D9E600113CA0 /* SelfieHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF7B08C27F5D9E600113CA0 /* SelfieHelper.swift */; };
+		6EF7B09227F5DAF700113CA0 /* OvalOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF7B09127F5DAF700113CA0 /* OvalOverlayView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,7 +83,6 @@
 		6E705AAC27F494AE004EB42E /* VeriffAssignmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VeriffAssignmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E705AB127F494AE004EB42E /* VeriffAssignmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VeriffAssignmentTests.swift; sourceTree = "<group>"; };
 		6E705AB327F494AE004EB42E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6E705AC427F49553004EB42E /* assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = assets.xcassets; sourceTree = "<group>"; };
 		6E705AC927F496D3004EB42E /* Bundle+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extentions.swift"; sourceTree = "<group>"; };
 		6E705ACE27F4971C004EB42E /* DocumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentViewController.swift; sourceTree = "<group>"; };
 		6E705ACF27F4971C004EB42E /* DocumentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DocumentViewController.xib; sourceTree = "<group>"; };
@@ -90,7 +90,6 @@
 		6E705ADA27F497B5004EB42E /* DocumnetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumnetViewModel.swift; sourceTree = "<group>"; };
 		6E705ADF27F4A040004EB42E /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		6E705AE027F4A040004EB42E /* ScanViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScanViewController.xib; sourceTree = "<group>"; };
-		6E705AE727F4A3AA004EB42E /* VFCamaraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VFCamaraManager.swift; sourceTree = "<group>"; };
 		6E705B3127F4B2DE004EB42E /* SwiftExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E705B3327F4B2DE004EB42E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6E705B3527F4B2DE004EB42E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +113,9 @@
 		6EA2243027F5737D001459C4 /* DocumentTypeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DocumentTypeCell.xib; sourceTree = "<group>"; };
 		6EA2243B27F574AF001459C4 /* DocumentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentType.swift; sourceTree = "<group>"; };
 		6EA2244127F57586001459C4 /* UITableView+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extentions.swift"; sourceTree = "<group>"; };
+		6EA2245727F587C3001459C4 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		6EF7B08C27F5D9E600113CA0 /* SelfieHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieHelper.swift; sourceTree = "<group>"; };
+		6EF7B09127F5DAF700113CA0 /* OvalOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvalOverlayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,13 +152,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6E6229A227F4BB6A0036D184 /* Preview */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Preview;
-			sourceTree = "<group>";
-		};
 		6E705A9927F494AE004EB42E = {
 			isa = PBXGroup;
 			children = (
@@ -222,9 +217,10 @@
 		6E705AC127F4951E004EB42E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				6E705AE727F4A3AA004EB42E /* VFCamaraManager.swift */,
 				6EA223FD27F5616B001459C4 /* SwiftLoader.swift */,
 				6EA2241527F56C9C001459C4 /* VFNavigationController.swift */,
+				6EF7B08C27F5D9E600113CA0 /* SelfieHelper.swift */,
+				6EF7B09127F5DAF700113CA0 /* OvalOverlayView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -232,9 +228,9 @@
 		6E705AC227F49524004EB42E /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				6E705AC427F49553004EB42E /* assets.xcassets */,
 				6EA2240927F56A5F001459C4 /* Localizable.strings */,
 				6EA2240F27F56A78001459C4 /* StringConstatns.swift */,
+				6EA2245727F587C3001459C4 /* Media.xcassets */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -243,7 +239,6 @@
 			isa = PBXGroup;
 			children = (
 				6EA2241B27F57312001459C4 /* DocumentType */,
-				6E6229A227F4BB6A0036D184 /* Preview */,
 				6E705ADE27F4A029004EB42E /* Scan */,
 				6E705ACD27F496FD004EB42E /* DocumentReader */,
 			);
@@ -494,8 +489,8 @@
 			files = (
 				6E705AE227F4A040004EB42E /* ScanViewController.xib in Resources */,
 				6EA2241F27F5732C001459C4 /* DocumentTypesViewController.xib in Resources */,
+				6EA2245827F587C3001459C4 /* Media.xcassets in Resources */,
 				6EA2240A27F56A5F001459C4 /* Localizable.strings in Resources */,
-				6E705AC527F49553004EB42E /* assets.xcassets in Resources */,
 				6EA2243227F5737D001459C4 /* DocumentTypeCell.xib in Resources */,
 				6E705AD127F4971C004EB42E /* DocumentViewController.xib in Resources */,
 			);
@@ -532,14 +527,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EF7B09227F5DAF700113CA0 /* OvalOverlayView.swift in Sources */,
 				6EA2243127F5737D001459C4 /* DocumentTypeCell.swift in Sources */,
 				6EA223FE27F5616B001459C4 /* SwiftLoader.swift in Sources */,
 				6E705ACA27F496D3004EB42E /* Bundle+Extentions.swift in Sources */,
 				6E705ADB27F497B5004EB42E /* DocumnetViewModel.swift in Sources */,
 				6EA2244227F57586001459C4 /* UITableView+Extentions.swift in Sources */,
+				6EF7B08D27F5D9E600113CA0 /* SelfieHelper.swift in Sources */,
 				6EA2240427F5641E001459C4 /* UIViewController+Extentions.swift in Sources */,
 				6EA2241027F56A78001459C4 /* StringConstatns.swift in Sources */,
-				6E705AE827F4A3AA004EB42E /* VFCamaraManager.swift in Sources */,
 				6E62299D27F4B9F90036D184 /* UIView+Extentions.swift in Sources */,
 				6E705AE127F4A040004EB42E /* ScanViewController.swift in Sources */,
 				6E705AD727F4975B004EB42E /* VFDocumnetReader.swift in Sources */,

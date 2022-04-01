@@ -7,32 +7,30 @@
 
 import UIKit
 import CoreLocation
+import AVKit
 
 class ScanViewController: UIViewController {
-    // MARK: - Constants
     
-    let cameraManager = VFCameraManager()
-    
-    // MARK: - @IBOutlets
-    
-    
-    @IBOutlet var flashModeImageView: UIImageView!
-    @IBOutlet var outputImageView: UIImageView!
-    @IBOutlet var cameraTypeImageView: UIImageView!
+    @IBOutlet weak var previewView: UIView!
+    @IBOutlet weak var captureButton: UIButton!
+    @IBOutlet weak var labelDescription: UILabel!
     
     
-    @IBOutlet var cameraView: UIView!
-    
-    
-    
-    @IBOutlet var cameraButton: UIButton!
-    
+    var captureSession: AVCaptureSession?
+    var videoPreviewLayer: AVCaptureVideoPreviewLayer?
+    var capturePhotoOutput: AVCapturePhotoOutput?
+    private let faceDetector = CIDetector(ofType: CIDetectorTypeFace,
+                                          context: nil,
+                                          options: [CIDetectorAccuracy: CIDetectorAccuracyHigh])
+    private let ovalOverlayView = OvalOverlayView()
     
     var didVerifiedWithText: ((_ document: DocumentDetails) -> Void)?
     var errorVerifingDocument: ((_ document: DocumentDetails?, _ error: DocumentVerifyError) -> Void)?
+    var documentType: VFDocumentType
     
-    // MARK: - UIViewController
-    init(settings: Int) {
+    
+    init(_ documentType: VFDocumentType) {
+        self.documentType = documentType
         super.init(nibName: ScanViewController.className, bundle: Bundle.shared)
     }
     
@@ -40,141 +38,233 @@ class ScanViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupCameraManager()
-        
-        navigationController?.navigationBar.isHidden = true
-        
-        
-        
-        
-        
-        
-        let currentCameraState = cameraManager.currentCameraStatus()
-        
-        if currentCameraState == .notDetermined {
+        setupUI()
+    }
+    
+    private func setupUI() {
+        navigationController?.isNavigationBarHidden = true
+        captureButton.layer.cornerRadius = captureButton.frame.size.width / 2
+        captureButton.clipsToBounds = true
+        labelDescription.text = documentType.frontDescription
+        // Get an instance of the AVCaptureDevice class to initialize a device object and provide the video as the media type parameter
+        let position: AVCaptureDevice.Position = documentType == .selfie ? AVCaptureDevice.Position.front : AVCaptureDevice.Position.back
+        guard let captureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: position) else {
+            fatalError("No video device found")
+        }
+        do {
+            // Get an instance of the AVCaptureDeviceInput class using the previous deivce object
+            let input = try AVCaptureDeviceInput(device: captureDevice)
             
-        } else if currentCameraState == .ready {
-            addCameraToView()
+            // Initialize the captureSession object
+            captureSession = AVCaptureSession()
+            
+            // Set the input devcie on the capture session
+            captureSession?.addInput(input)
+            
+            // Get an instance of ACCapturePhotoOutput class
+            capturePhotoOutput = AVCapturePhotoOutput()
+            capturePhotoOutput?.isHighResolutionCaptureEnabled = true
+            
+            captureSession?.sessionPreset = .photo
+            
+            
+            
+            // Set delegate and use the default dispatch queue to execute the call back
+            captureSession?.addOutput(capturePhotoOutput!)
+            
+            // Initialize a AVCaptureMetadataOutput object and set it as the input device
+            let captureMetadataOutput = AVCaptureMetadataOutput()
+            captureSession?.addOutput(captureMetadataOutput)
+            
+            
+            //Initialise the video preview layer and add it as a sublayer to the viewPreview view's layer
+            videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession!)
+            videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
+            videoPreviewLayer?.frame = view.layer.bounds
+            
+            previewView.layer.addSublayer(videoPreviewLayer!)
+            
+            //start video capture
+            captureSession?.startRunning()
+            
+            
+        } catch {
+            //If any error occurs, simply print it out
+            print(error)
+            return
+        }
+        setupOverlay()
+    }
+    private func setupOverlay() {
+        if documentType == .selfie {
+            previewView.addSubview(ovalOverlayView)
+            
         } else {
             
+            let camPreviewBounds = view.bounds
+            let cropRect = CGRect(
+                x: 10,
+                y: 100,
+                width: previewView.bounds.width - 20,
+                height: 250
+            )
+            
+            let path = UIBezierPath(roundedRect: camPreviewBounds, cornerRadius: 0)
+            path.append(UIBezierPath(rect: cropRect))
+            
+            let layer = CAShapeLayer()
+            layer.path = path.cgPath
+            layer.fillRule = CAShapeLayerFillRule.evenOdd;
+            layer.fillColor = UIColor.black.cgColor
+            layer.opacity = 0.5;
+            
+            previewView.layer.addSublayer(layer)
+        }
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func onTapTakePhoto(_ sender: Any) {
+        // Make sure capturePhotoOutput is valid
+        guard let capturePhotoOutput = self.capturePhotoOutput else { return }
+        
+        // Get an instance of AVCapturePhotoSettings class
+        let photoSettings = AVCapturePhotoSettings()
+        
+        // Set photo settings for our need        
+        photoSettings.isHighResolutionPhotoEnabled = true
+        photoSettings.flashMode = .auto
+        // Call capturePhoto method by passing our photo settings and a delegate implementing AVCapturePhotoCaptureDelegate
+        capturePhotoOutput.capturePhoto(with: photoSettings, delegate: self)
+    }
+    
+    private func moveToPreview(image: UIImage) {
+        let docViewModel: DocumentReaderViewModel = DocumentReaderViewModel()
+        let documentController: DocumentViewController = DocumentViewController(viewModel: docViewModel, documentType: documentType)
+        documentController.image = image
+        self.navigationController?.pushViewController(documentController, animated: true)
+    }
+    private func cropToPreviewLayer(from originalImage: UIImage, toSizeOf rect: CGRect) -> UIImage? {
+        guard let cgImage = originalImage.cgImage else { return nil }
+        
+        // This previewLayer is the AVCaptureVideoPreviewLayer which the resizeAspectFill and videoOrientation portrait has been set.
+        guard let outputRect = videoPreviewLayer?.metadataOutputRectConverted(fromLayerRect: rect) else { return nil }
+        
+        let width = CGFloat(cgImage.width)
+        let height = CGFloat(cgImage.height)
+        
+        let cropRect = CGRect(x: (outputRect.origin.x * width), y: (outputRect.origin.y * height), width: (outputRect.size.width * width), height: (outputRect.size.height * height))
+        
+        if let croppedCGImage = cgImage.cropping(to: cropRect) {
+            return UIImage(cgImage: croppedCGImage, scale: 1.0, orientation: originalImage.imageOrientation)
         }
         
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        addCameraToView()
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = true
-        cameraManager.resumeCaptureSession()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        cameraManager.stopQRCodeDetection()
-        cameraManager.stopCaptureSession()
-    }
-    
-    // MARK: - ViewController
-    fileprivate func setupCameraManager() {
-        cameraManager.shouldEnableExposure = true
-        cameraManager.cameraOutputQuality = .high
-        cameraManager.writeFilesToPhoneLibrary = false
-        cameraManager.cameraOutputMode = .stillImage
-        cameraManager.shouldFlipFrontCameraImage = false
-        cameraManager.showAccessPermissionPopupAutomatically = false
-    }
-    
-    
-    fileprivate func addCameraToView() {
-        cameraManager.addPreviewLayerToView(cameraView, newCameraOutputMode: CameraOutputMode.stillImage)
-        cameraManager.showErrorBlock = { [weak self] (erTitle: String, erMessage: String) -> Void in
-            
-            let alertController = UIAlertController(title: erTitle, message: erMessage, preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (_) -> Void in }))
-            
-            self?.present(alertController, animated: true, completion: nil)
-        }
-    }
-    
-    // MARK: - @IBActions
-    
-    @IBAction func changeFlashMode(_ sender: UIButton) {
-        switch cameraManager.changeFlashMode() {
-        case .off:
-            flashModeImageView.image = UIImage(named: "flash_off")
-        case .on:
-            flashModeImageView.image = UIImage(named: "flash_on")
-        case .auto:
-            flashModeImageView.image = UIImage(named: "flash_auto")
-        }
-    }
-    
-    @IBAction func didTappedCapture(_ sender: UIButton) {
-        cameraManager.capturePictureWithCompletion { result in
-            switch result {
-            case .failure:
-                self.cameraManager.showErrorBlock("Error occurred", "Cannot save picture.")
-            case .success(let content):
-                print("Display Image");
-                let viewModel = DocumentReaderViewModel()
-                let docViewController = DocumentViewController(viewModel: viewModel)
-                docViewController.image = content.asImage
-                docViewController.didVerifiedWithText = self.didVerifiedWithText
-                docViewController.errorVerifingDocument = self.errorVerifingDocument
-                self.navigationController?.pushViewController(docViewController, animated: true)
-            }
-        }
-    }
-    
-    
-    
-    
-    @IBAction func changeCameraDevice() {
-        cameraManager.cameraDevice = cameraManager.cameraDevice == CameraDevice.front ? CameraDevice.back : CameraDevice.front
-    }
-    
-    @IBAction func askForCameraPermissions() {
-        cameraManager.askUserForCameraPermission { permissionGranted in
-            
-            if permissionGranted {
-                self.addCameraToView()
-            } else {
-                if #available(iOS 10.0, *) {
-                    UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
-                } else {
-                    // Fallback on earlier versions
-                }
-            }
-        }
-    }
-    
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        get {
-            return .portrait
-        }
-    }
-    override var shouldAutorotate: Bool {
-        false
+        return nil
     }
 }
 
-public extension Data {
-    func printExifData() {
-        let cfdata: CFData = self as CFData
-        let imageSourceRef = CGImageSourceCreateWithData(cfdata, nil)
-        let imageProperties = CGImageSourceCopyMetadataAtIndex(imageSourceRef!, 0, nil)!
+extension ScanViewController : AVCapturePhotoCaptureDelegate {
+    
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         
-        let mutableMetadata = CGImageMetadataCreateMutableCopy(imageProperties)!
-        
-        CGImageMetadataEnumerateTagsUsingBlock(mutableMetadata, nil, nil) { _, tag in
-            print(CGImageMetadataTagCopyName(tag)!, ":", CGImageMetadataTagCopyValue(tag)!)
-            return true
+        if documentType != .selfie {
+            guard error == nil else {
+                print("Fail to capture photo: \(String(describing: error))")
+                return
+            }
+            
+            guard let imageData = photo.fileDataRepresentation() else {
+                print("Fail to convert pixel buffer")
+                return
+            }
+            
+            
+            guard let capturedImage = UIImage.init(data: imageData , scale: 1.0) else {
+                print("Fail to convert image data to UIImage")
+                return
+            }
+            
+            let width = capturedImage.size.width
+            let height = capturedImage.size.height
+            let origin = CGPoint(x: (width - height)/2, y: (height - height)/2)
+            let size = CGSize(width: height, height: height)
+            guard let imageRef = capturedImage.cgImage?.cropping(to: CGRect(origin: origin, size: size)) else {
+                print("Fail to crop image")
+                return
+            }
+            
+            
+            let imageToSave = UIImage(cgImage: imageRef, scale: 1.0, orientation: .right)
+            
+            
+            let rect = CGRect(x: 10, y: 100, width: (width / 2), height: 350)
+            if let croppedImage = self.cropToPreviewLayer(from: imageToSave, toSizeOf: rect) {
+                moveToPreview(image: croppedImage)
+                
+            }
+        } else {
+            guard error == nil else {
+                print("Fail to capture photo: \(String(describing: error))")
+                return
+            }
+            
+            guard let imageData = photo.fileDataRepresentation() else {
+                print("Fail to convert pixel buffer")
+                return
+            }
+            
+            
+            guard let capturedImage = UIImage.init(data: imageData , scale: 1.0) else {
+                print("Fail to convert image data to UIImage")
+                return
+            }
+            
+            let width = capturedImage.size.width
+            let height = capturedImage.size.height
+            let origin = CGPoint(x: (width - height)/2, y: (height - height)/2)
+            let size = CGSize(width: height, height: height)
+            guard let imageRef = capturedImage.cgImage?.cropping(to: CGRect(origin: origin, size: size)) else {
+                print("Fail to crop image")
+                return
+            }
+            
+            
+            let imageToSave = UIImage(cgImage: imageRef, scale: 1.0, orientation: .right)
+            moveToPreview(image: imageToSave)
         }
+    }
+}
+
+
+
+extension UIInterfaceOrientation {
+    var videoOrientation: AVCaptureVideoOrientation? {
+        switch self {
+        case .portraitUpsideDown: return .portraitUpsideDown
+        case .landscapeRight: return .landscapeRight
+        case .landscapeLeft: return .landscapeLeft
+        case .portrait: return .portrait
+        default: return nil
+        }
+    }
+}
+
+
+extension AVCaptureVideoPreviewLayer {
+    func rectOfInterestConverted(parentRect: CGRect, fromLayerRect: CGRect) -> CGRect {
+        let parentWidth = parentRect.width
+        let parentHeight = parentRect.height
+        let newX = (parentWidth - fromLayerRect.maxX)/parentWidth
+        let newY = 1 - (parentHeight - fromLayerRect.minY)/parentHeight
+        let width = 1 - (fromLayerRect.minX/parentWidth + newX)
+        let height = (fromLayerRect.maxY/parentHeight) - newY
+        
+        return CGRect(x: newX, y: newY, width: width, height: height)
     }
 }

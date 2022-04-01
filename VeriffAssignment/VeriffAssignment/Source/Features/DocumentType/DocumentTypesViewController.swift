@@ -13,6 +13,7 @@ class DocumentTypesViewController: UIViewController {
     @IBOutlet var tableView: UITableView?
     
     let viewModel: DocumentTypesViewModelType
+    var arrayDocuments: [VFDocumentType] = []
     init(viewModel: DocumentTypesViewModelType) {
         self.viewModel = viewModel
         super.init(nibName: DocumentTypesViewController.className, bundle: Bundle.shared)
@@ -29,21 +30,34 @@ class DocumentTypesViewController: UIViewController {
         setupUI()
     }
     func setupUI() {
+        let docs = VFDocumentType.allCases.filter({$0 != .selfie})
+        arrayDocuments.append(contentsOf: docs)
         title = StringConstants.DocumentTypesScreen.title.localized
         navigationController?.navigationBar.prefersLargeTitles = true
         
     }
 
 }
-extension DocumentTypesViewController : UITableViewDataSource {
+extension DocumentTypesViewController : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return VFDocumentType.allCases.count
+        return arrayDocuments.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.getCell(DocumentTypeCell.self) else { return UITableViewCell() }
         cell.document = VFDocumentType.allCases[indexPath.row]
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.didSelectedDocument(arrayDocuments[indexPath.row])
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let scanController = ScanViewController(VFDocumentType.allCases[indexPath.row])
+            navigationController?.pushViewController(scanController, animated: true)
+        } else {
+            showAlert(title: StringConstants.AlertTitle.noCamera.localized, message: StringConstants.AlertMessages.cameraNotAvailable.localized)
+        }
+        
     }
 }

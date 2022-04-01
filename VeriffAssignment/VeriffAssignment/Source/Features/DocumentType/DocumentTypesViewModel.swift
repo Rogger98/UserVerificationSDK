@@ -8,10 +8,14 @@
 import Foundation
 
 protocol DocumentTypesViewModelType {
-    
+    func didSelectedDocument(_ type: VFDocumentType)
 }
 
 
-struct DocumentTypesViewModel: DocumentTypesViewModelType {
+final class DocumentTypesViewModel: DocumentTypesViewModelType {
+        
     
+    func didSelectedDocument(_ type: VFDocumentType) {
+        
+    }
 }

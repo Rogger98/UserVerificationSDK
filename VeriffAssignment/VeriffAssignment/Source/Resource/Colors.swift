@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// takes the responsblity of framwork colors
 struct AppColors {
     static let tintColor: UIColor? = UIColor(named: "tintColor")
 }

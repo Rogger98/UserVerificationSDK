@@ -8,6 +8,7 @@
 import UIKit
 import Vision
 
+/// takes the responsblity for verifiing user face in picture 
 class SelfieViewController: UIViewController {
 
     @IBOutlet private var imageView: UIImageView?
@@ -44,8 +45,7 @@ class SelfieViewController: UIViewController {
     }
 
     private func setupUI() {
-        //imageView?.image = image
-        imageView?.image = UIImage(named: "test")
+        imageView?.image = image        
         navigationController?.isNavigationBarHidden = false
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.navigationBar.backItem?.title = ""

@@ -8,6 +8,7 @@
 import UIKit
 import AVKit
 
+/// takes the responsblity for taking user selfie 
 class TakeSelfieViewController: UIViewController {
     
     @IBOutlet weak var previewView: UIView!

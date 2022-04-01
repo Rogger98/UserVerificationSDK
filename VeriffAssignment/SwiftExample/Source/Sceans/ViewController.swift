@@ -25,11 +25,11 @@ class ViewController: UIViewController {
             DispatchQueue.dispatchHelper {
                 
                 guard let userImageData = details.userImage else { return }
-                self.imageView?.image = UIImage(named: "test")
+                self.imageView?.image = userImageData
                 self.labelDocumentDetails?.text = details.data
             }
         } errorVerifingDocument: { (doc, error) in
-            print(error.errorDescription)
+            print(error.errorDescription ?? "")
         }
 
     }

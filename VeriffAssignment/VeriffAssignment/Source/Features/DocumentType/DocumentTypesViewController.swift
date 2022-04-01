@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// takes the responsblity for showing all supported document verification 
 class DocumentTypesViewController: UIViewController {
 
     // MARK: - Outlets

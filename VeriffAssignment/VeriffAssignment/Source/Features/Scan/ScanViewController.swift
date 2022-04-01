@@ -9,6 +9,7 @@ import UIKit
 import CoreLocation
 import AVKit
 
+/// takes the responsblity for capturing document part 
 class ScanViewController: UIViewController {
     
     @IBOutlet weak var previewView: UIView!

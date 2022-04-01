@@ -16,7 +16,7 @@ public struct DocumentDetails {
 }
 
 
-
+/// takes the responsblity of document verification
 final class DocumentViewController: UIViewController {
     
     @IBOutlet private var imageView: UIImageView?
@@ -111,6 +111,7 @@ final class DocumentViewController: UIViewController {
     
 }
 extension DocumentViewController {
+    
     func setUpRequest() {
         textRecognitionRequest = VNRecognizeTextRequest(completionHandler: { (request, error) in
             if let results = request.results, !results.isEmpty {
@@ -128,6 +129,7 @@ extension DocumentViewController {
         })
     }
     
+    /// takes the responsblity for checking face is visible in document
     func setUpFacedetection(image: UIImage, completion: @escaping(_ face: FacesOnDocument) -> Void) {
         
         let request = VNDetectFaceRectanglesRequest { (req, err) in
@@ -160,6 +162,8 @@ extension DocumentViewController {
         }
         
     }
+    
+    /// takes the responsblity for getting text in document
     func makeRequest(image: UIImage, complition: @escaping(_ face: FacesOnDocument) -> Void) {
         guard let request = textRecognitionRequest else {
             return

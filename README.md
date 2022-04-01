@@ -36,7 +36,13 @@
 -----------------------------------------------------------------------------
   
   #### How to use? ####
+   Add the camera permission in your app in info.plist 
+
+
+  <img width="1000" alt="Screenshot 2022-04-01 at 8 08 49 PM" src="https://user-images.githubusercontent.com/44162605/161285821-314dc62c-83f0-4276-8dd2-af4b2ce533bf.png">
+  Now use the framwork in your controller from you want to verify 
   
+
   ``` 
 import UIKit
 import VeriffAssignment

@@ -1,0 +1,48 @@
+
+// Common
+"Common.verifying" = "Verifying...";
+"Common.ok" = "Ok";
+"Common.cancel" = "Cancel";
+
+
+// Document Type Screen
+"DocumentTypesScreen.title" = "Select a document";
+
+
+// Alert Titles
+"AlertTitle.noCamera" = "Camera Not Found";
+
+
+// Alert Messages
+"AlertMessages.cameraNotAvailable" = "Camara not available in your device or try after restart app.";
+
+
+// IDentity Card
+"IdentityCard.name" = "Identity Card";
+"IdentityCard.shortName" = "ID Card";
+"IdentityCard.frontDescription" = "Position the front of the ID Card.";
+
+// Passport
+"Passport.name" = "Passport";
+"Passport.shortName" = "Passport";
+"Passport.frontDescription" = "Position the front of the passport.";
+
+// Driving licence
+"DrivingLicence.name" = "Driving Licence's";
+"DrivingLicence.shortName" = "licence";
+"DrivingLicence.frontDescription" = "Position the front of the licence.";
+
+// Resident Card
+"ResidentCard.name" = "Resident Permenent Card";
+"ResidentCard.shortName" = "card";
+"ResidentCard.frontDescription" = "Position the front of the resident card.";
+
+// Selfie
+"Selfie.name" = "Take a selfie";
+"Selfie.shortName" = "selfie";
+"Selfie.frontDescription" = "Position your face in oval.";
+
+// Error
+"DocumentErrors.noPhotoIdentity" = "Face not recognisable on document.";
+"DocumentErrors.noDocumentDetails" = "Document not visable.";
+"DocumentErrors.faceNotRecognize" = "Face not recognisable";

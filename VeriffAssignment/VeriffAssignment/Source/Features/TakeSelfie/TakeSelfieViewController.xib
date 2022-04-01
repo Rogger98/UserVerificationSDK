@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TakeSelfieViewController" customModule="VeriffAssignment" customModuleProvider="target">
+            <connections>
+                <outlet property="captureButton" destination="aKB-Hw-iw9" id="Z12-va-nAE"/>
+                <outlet property="labelDescription" destination="rBK-Qz-Lp0" id="kOH-RI-8mS"/>
+                <outlet property="previewView" destination="cnK-Nc-a8K" id="gzW-b4-0HL"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cnK-Nc-a8K">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rBK-Qz-Lp0">
+                    <rect key="frame" x="20" y="688.5" width="374" height="33.5"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aKB-Hw-iw9">
+                    <rect key="frame" x="167" y="772" width="80" height="80"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="45T-hU-fdA"/>
+                        <constraint firstAttribute="height" constant="80" id="qqu-Ih-KOD"/>
+                    </constraints>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" image="icon_cam">
+                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="25"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="boarderWidth">
+                            <real key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="onTapTakePhoto:" destination="-1" eventType="touchUpInside" id="wqs-VK-y56"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="rBK-Qz-Lp0" secondAttribute="trailing" constant="20" id="0bk-ix-hwd"/>
+                <constraint firstItem="rBK-Qz-Lp0" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="6w2-oP-LZc"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="aKB-Hw-iw9" secondAttribute="bottom" constant="10" id="bxw-7o-zK6"/>
+                <constraint firstItem="cnK-Nc-a8K" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="gXB-hZ-Jgb"/>
+                <constraint firstItem="aKB-Hw-iw9" firstAttribute="top" secondItem="rBK-Qz-Lp0" secondAttribute="bottom" constant="50" id="htn-F0-ytR"/>
+                <constraint firstAttribute="trailing" secondItem="cnK-Nc-a8K" secondAttribute="trailing" id="idu-mr-0tj"/>
+                <constraint firstItem="cnK-Nc-a8K" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="qzf-gi-J0Q"/>
+                <constraint firstItem="aKB-Hw-iw9" firstAttribute="centerX" secondItem="cnK-Nc-a8K" secondAttribute="centerX" id="srx-aB-2sY"/>
+                <constraint firstAttribute="bottom" secondItem="cnK-Nc-a8K" secondAttribute="bottom" id="vyv-Zb-zzY"/>
+            </constraints>
+            <point key="canvasLocation" x="137.68115942028987" y="118.52678571428571"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_cam" width="144" height="144"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
